@@ -1,3 +1,7 @@
+resource "google_compute_address" "static_ip_app2" {
+  name = "juice-shop-1"
+}
+
 resource "google_compute_instance" "juice-shop-1" {
   name         = "juice-shop-1"
   machine_type = "e2-medium"
@@ -14,7 +18,7 @@ resource "google_compute_instance" "juice-shop-1" {
   network_interface {
     subnetwork = "app"
     access_config {
-      
+      nat_ip = google_compute_address.static_ip_app2.address
     }
   }
     

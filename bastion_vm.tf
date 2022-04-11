@@ -1,3 +1,6 @@
+resource "google_compute_address" "static_ip_bastion" {
+  name = "bastion-vm"
+}
 resource "google_compute_instance" "bastion" {
   name         = "bastion"
   machine_type = "e2-medium"
@@ -14,7 +17,7 @@ resource "google_compute_instance" "bastion" {
   network_interface {
     subnetwork = "mgmt"
     access_config {
-      
+      nat_ip = google_compute_address.static_ip_bastion.address
     }
   }
 
