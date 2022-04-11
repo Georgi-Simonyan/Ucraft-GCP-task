@@ -1,9 +1,9 @@
-resource "google_compute_instance" "bastion" {
-  name         = "bastion"
+resource "google_compute_instance" "juice-shop-0" {
+  name         = "juice-shop-0"
   machine_type = "e2-medium"
   zone = var.gcp_zone
 
-  tags = ["bastion", "ssh"]
+  tags = ["https"]
 
   boot_disk {
     initialize_params {
@@ -12,11 +12,10 @@ resource "google_compute_instance" "bastion" {
   }
 
   network_interface {
-    subnetwork = "mgmt"
+    subnetwork = "app"
     access_config {
       
     }
   }
-
-  metadata_startup_script = "yum install ansible -y"
+    
 }
