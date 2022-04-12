@@ -30,10 +30,11 @@ ssh-keygen -t rsa -f ~/.ssh/ansbile -C ansible -b 2048
 ## Create Ansible Playbook for Nginx Installation
 
 - Create `ansible/roles/nginx/tasks/main.yaml` task
+- Create `ansible/hosts` to specify on what instances nginx should be installed
 - Create `ansible/nginx.yaml` playbook
 - Create Ansible config `ansible/ansible.cfg` to skip host key verification
-```bash
-command -v terraform
-```
+
+## To apply infrastructure use following commands
+
 - Run `terraform init` to download provider and plugins
 - Run `terraform apply` to apply infrastructure instance in GCP
