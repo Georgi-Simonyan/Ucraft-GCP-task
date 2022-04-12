@@ -5,6 +5,10 @@
 - Ansible
 - Terraform
 
+## Variables
+
+- Input your own variables in vars.tf and terraform.tfvars files
+
 ## Generate SSH Key Pair
 
 - Run the following command to generate elliptic curve ssh key pair
