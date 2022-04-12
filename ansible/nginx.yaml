@@ -1,6 +1,6 @@
 ---
 - name: Install Nginx
-  hosts: all
+  hosts: [Web]
   remote_user: ansible
   become: yes
 

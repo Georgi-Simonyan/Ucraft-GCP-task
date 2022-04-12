@@ -1,6 +1,15 @@
 resource "google_compute_address" "static_ip_app1" {
   name = "juice-shop-0"
+  address = "34.159.39.116"
 }
+
+resource "google_compute_address" "static_internal_ip_app1" {
+  name = "juice-shop-0-internal"
+  subnetwork = "app"
+  address_type = "INTERNAL"
+  address = "10.0.0.37"
+}
+
 
 resource "google_compute_instance" "juice-shop-0" {
   name         = "juice-shop-0"
