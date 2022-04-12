@@ -21,5 +21,6 @@ resource "google_compute_instance" "juice-shop-0" {
       nat_ip = google_compute_address.static_ip_app1.address
     }
   }
-    
+
+  metadata_startup_script = "sudo yum install ansible -y" 
 }

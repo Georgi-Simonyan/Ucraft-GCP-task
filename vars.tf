@@ -31,3 +31,11 @@ variable "bastion-ssh-key" {
   type = string
   description = "Declaring variable for the bastion ssh key"
 }
+
+variable "ssh_user" {
+  type = string
+}
+
+variable "private_key_path" {
+  type = string
+}

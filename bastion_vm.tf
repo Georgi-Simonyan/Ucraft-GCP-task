@@ -1,5 +1,6 @@
 resource "google_compute_address" "static_ip_bastion" {
   name = "bastion-vm"
+  address = "35.246.207.173"
 }
 resource "google_compute_instance" "bastion" {
   name         = "bastion"
@@ -21,5 +22,19 @@ resource "google_compute_instance" "bastion" {
     }
   }
 
-  metadata_startup_script = "yum install ansible -y"
+  metadata_startup_script = "${file("startup.sh")}"
+# provisioner "remote-exec" {
+#     inline = ["echo 'Wait until SSH is ready'"]
+
+#     connection {
+#       type        = "ssh"
+#       user        = var.ssh_user
+#       private_key = file(var.private_key_path)
+#       host        = google_compute_instance.bastion.network_interface.0.access_config.0.nat_ip
+#     }
+#   }
+
+#   provisioner "local-exec" {
+#     command = "ansible-playbook  -i ${google_compute_instance.bastion.network_interface.0.access_config.0.nat_ip}, --private-key ${var.private_key_path} nginx.yaml"
+#   }
 }
